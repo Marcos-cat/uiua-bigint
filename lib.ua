@@ -27,7 +27,7 @@ Lt  ← ¬Ge
 Le  ← ¬Gt
 
 # Make a BigInt from a scalar or a string of digits
-New ← ⌅(⨬(Carry¤|-@0)⊸type|/(+×10))
+Call ← ⌅(⨬(Carry¤|-@0)⊸type|/(+×10))
 # Convert a BigInt into a string of digits
 Str ← ⌅(+@0|New)
 
