@@ -1,48 +1,39 @@
-Carry ↚ ⍥(+⨬↻₁⊓(⊂⊙0|⊂0)±⊸⊢⌊⊃÷◿10)∞
-Align ↚ ⍜(⍥⊙⊙⌅(:|:)⌅◡<|⊂↯⊙0⌵-)◡∩⧻
+Base ← 10
+New  ← ⍥(⊥Base)⊸(=₀⧻△)
 
-Mul ← Carry /+⬚0≡⌝↘°⊏⊞×
-# ? Scalar BigInt
-MulN ← Carry ×
+Fix ↚ (
+  Overflow ← ⍢(
+    ⨬(+°↻₁|+⊓⌞⊂˜⊂0)⊸(±⊣) ⊃(⌊÷|◿)Base
+  | ¬/××⊃(≥₀|<Base))
+  Fractional ← ⌊⍢(+⍜⊢+˜⊂0×Base°˜⊂°+|¬/×=₀◿₁↘₁)
+  ▽¬⍜⇌\×⊸=₀ Fractional Overflow
+)
 
-AddImpl ↚ Carry + Align
-SubImpl ↚ Carry - Align
-# ? BigInt BigInt
-Add ← ⌅(AddImpl|SubImpl)
-# ? BigInt BigInt
+Eq ← ≍
+Ne ← ¬Eq
+Le ← ⨬(⍥⋅(<∩⌞⊏⊣⊚◡≠)⊃=<◡∩⧻|1)◡Eq
+Ge ← ˜Le
+Gt ← ¬Le
+Lt ← ˜Gt
+
+Add ← ⌅(Fix ⬚0+ ∩New|Fix ⬚0- ◡(˙⍤Ge))
 Sub ← ⌝Add
 
-AddNImpl ↚ Carry ⍜⊙⊣+
-SubNImpl ↚ Carry ⍜⊙⊣-
-# ? Scalar BigInt
-AddN ← ⌅(AddNImpl|SubNImpl)
-# ? Scalar BigInt
-SubN ← ⌝AddN
+Mul ← Fix ⨬(New ×|/+⬚0≡⌝↘°⊏⊞×) ×◡∩(=₁⧻△)
 
-Eq  ← ≍
-Neq ← ¬Eq
-Gt  ← ⨬>⋅⋅(>∩(⊗1)⊃><)◡=◡∩⧻
-Ge  ← ↥⊃Gt Eq
-Lt  ← ¬Ge
-Le  ← ¬Gt
-
-# Make a BigInt from a scalar or a string of digits
-New ← ⌅(⨬(Carry¤|-@0)⊸type|/(+×10))
-# Convert a BigInt into a string of digits
-Str ← ⌅(+@0|New)
+Str ← +@0⇌
 
 ┌─╴test
-  ⍤⤙≍ [1 6 8] Add [1 2 3] [4 5]
-  ⍤⤙≍ 4782 ◌◌⍢⊓⤚Add+₁(<1e3⧻)∩¤1 0 1
+  Factorial ← /Mul⇡₁
 
-  Fact ← ∧MulN+₁⇡⊙[1]
+  ⍤⤙≍ "3628800" Str Factorial 10
+  Str Factorial 52
+  "80658175170943878571660636856403766975289505440883277824000000000000"
+  ⍤⤙≍
 
-  Fact 42
-  ⍤⤙≍ New $ 1405006117752879898543142606244511569936384000000000
+  Fib ← ◌⍥⤚Add⊙(1 0)
 
-  Mul. Fact 20
-  ⍤⤙≍ New $ 5919012181389927685417441689600000000
-
-  AddN 42 New $ 12345678901234567890
-  ⍤⤙≍ New $ 12345678901234567932
+  Str Fib 256
+  "141693817714056513234709965875411919657707794958199867"
+  ⍤⤙≍
 └─╴
