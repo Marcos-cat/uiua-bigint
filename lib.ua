@@ -1,5 +1,6 @@
 Base ← 10
 New  ← ⍥(⊥Base)⊸(=₀⧻△)
+Call ← New
 Str  ← +@0⇌
 
 Fix ↚ (
@@ -30,7 +31,7 @@ ModDiv ← (
   | ˙⍤0)
 )
 
-Mul ← ⌅(Fix ⨬(New ×|/+⬚0≡⌝↘°⊏⊞×) ×◡∩(=₁⧻△)|⋅∘ModDiv)
+Mul ← ⌅(Fix /+⬚0≡⌝↘°⊏⊞× ∩New|⋅∘ModDiv)
 Div ← ⌝Mul
 
 Mod ← ⊙◌ModDiv
