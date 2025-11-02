@@ -7,8 +7,7 @@ Fix ↚ (
   Overflow ← ⍢(
     ⨬(+°↻₁|+⊓⌞⊂˜⊂0)⊸(±⊣) ⊃(⌊÷|◿)Base
   | ¬/××⊃(≥₀|<Base))
-  Fractional ← ⌊⍢(+⍜⊢+˜⊂0×Base°˜⊂°+|¬/×=₀◿₁↘₁)
-  ▽¬⍜⇌\×⊸=₀ Fractional Overflow
+  ▽¬⍜⇌\×⊸=₀ Overflow
 )
 
 Eq ← ≍ ∩New
@@ -34,7 +33,7 @@ ModDiv ← (
 Mul ← ⌅(Fix /+⬚0≡⌝↘°⊏⊞× ∩New|⋅∘ModDiv)
 Div ← ⌝Mul
 
-Pow ← /Mul↯ °[]⊸△
+Pow ← ⨬(New 1|⋅New|/Mul↯) ⊸⨂0_1 °[]⊸△
 
 Mod ← ⊙◌ModDiv
 
