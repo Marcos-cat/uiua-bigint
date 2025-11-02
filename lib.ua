@@ -34,6 +34,8 @@ ModDiv ← (
 Mul ← ⌅(Fix /+⬚0≡⌝↘°⊏⊞× ∩New|⋅∘ModDiv)
 Div ← ⌝Mul
 
+Pow ← /Mul↯ °[]⊸△
+
 Mod ← ⊙◌ModDiv
 
 Gcd ← ◌⍢⤚Mod(Ne0)
